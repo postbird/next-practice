@@ -24,3 +24,8 @@
   font-size: 16px;
   font-weight: 500;
 }
+
+.contentWrap {
+  width: 700px;
+  word-wrap: break-all;
+}

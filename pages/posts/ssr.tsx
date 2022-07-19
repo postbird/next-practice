@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { Layout, PostListItem } from '../../components';
+import { Layout, PostList, PostListItem } from '../../components';
 import { fetchPostList } from '../api/posts';
 import { IPost } from '../../types';
 import { List } from 'antd';
@@ -9,11 +9,7 @@ const SSRPostsPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
   return (
     <Layout>
       <h1>Posts From SSR</h1>
-      <List>
-        {posts?.map((item) => (
-          <PostListItem item={item} key={item.id} />
-        ))}
-      </List>
+      <PostList posts={posts} />
     </Layout>
   );
 };

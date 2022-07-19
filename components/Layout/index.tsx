@@ -34,7 +34,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
           </div>
         ))}
       </div>
-      {children}
+      <div className={styles.contentWrap}>{children}</div>
     </div>
   );
 };
