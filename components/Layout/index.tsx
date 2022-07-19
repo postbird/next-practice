@@ -8,8 +8,16 @@ const routes = [
     path: '/',
   },
   {
-    label: 'Posts',
+    label: 'Posts-PreRender',
     path: '/posts',
+  },
+  {
+    label: 'Posts-CSR',
+    path: '/posts/csr',
+  },
+  {
+    label: 'Posts-SSR',
+    path: '/posts/ssr',
   },
 ];
 

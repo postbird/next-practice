@@ -2,8 +2,6 @@ import { List } from 'antd';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import Script from 'next/script';
 import { Layout } from '../../components';
 import { posts } from '../../mocks';
 import { IPost } from '../../types';
@@ -26,7 +24,7 @@ const PostPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
 
       <div className={styles.wrap}>
         <h1>My Posts</h1>
-        <List>
+        <List loading={posts?.length === 0}>
           {posts?.map((item) => (
             <List.Item key={item.id} style={{ marginBottom: 32 }}>
               <List.Item.Meta
@@ -53,6 +51,7 @@ const PostPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
 export default PostPage;
 
 export const getStaticProps = async () => {
+  // const posts = await fetchPostList();
   return {
     props: {
       posts,
