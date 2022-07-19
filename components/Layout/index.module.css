@@ -22,6 +22,10 @@
   margin: 0 6px;
   color: #0070f3;
   font-size: 16px;
+  transition: linear 100ms all;
+}
+
+.activeLink {
   font-weight: 500;
 }
 
