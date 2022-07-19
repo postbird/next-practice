@@ -34,7 +34,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         {routes.map((item) => (
           <div
             className={`${styles.link} ${
-              item.path === router.asPath ? styles.active : ''
+              item.path === router.asPath ? styles.activeLink : ''
             }`}
             key={item.path}
           >
