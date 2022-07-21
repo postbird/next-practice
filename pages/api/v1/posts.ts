@@ -1,4 +1,4 @@
-import { NextApiHandler, NextApiRequest } from 'next';
+import { NextApiHandler } from 'next';
 
 const handler: NextApiHandler = (req, res) => {
   console.log('req', req.query);

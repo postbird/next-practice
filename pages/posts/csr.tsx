@@ -1,9 +1,8 @@
+import { Button, Skeleton } from 'antd';
 import { NextPage } from 'next';
-import React, { useEffect } from 'react';
-import { Layout, PostList, PostListItem } from '../../components';
-import useSWR, { useSWRConfig } from 'swr';
+import useSWR from 'swr';
 import { fetchPostList } from '../../apis/posts';
-import { Button, List, Skeleton } from 'antd';
+import { Layout, PostList } from '../../components';
 
 const LIST_API = '/posts/list';
 

@@ -1,12 +1,12 @@
-import { PageHeader } from 'antd';
-import { NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
+import { remark } from 'remark';
+import html from 'remark-html';
 import { Layout } from '../../components';
 import { posts } from '../../mocks';
 import { IPost } from '../../types';
-import { remark } from 'remark';
-import html from 'remark-html';
 import styles from './index.module.css';
+
 import Head from 'next/head';
 
 const PostDetail: NextPage<{ post: IPost; postHtml: string }> = ({
@@ -18,7 +18,7 @@ const PostDetail: NextPage<{ post: IPost; postHtml: string }> = ({
       <Head>
         <title>{post.title}</title>
       </Head>
-      
+
       <Image
         src="/images/post.png"
         width={700}
@@ -40,7 +40,7 @@ const PostDetail: NextPage<{ post: IPost; postHtml: string }> = ({
 
 export default PostDetail;
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = posts.map((item) => `/posts/${item.id}`);
   console.log('paths', paths);
   return {
@@ -49,13 +49,9 @@ export const getStaticPaths = () => {
   };
 };
 
-export const getStaticProps = async ({
-  params,
-}: {
-  params: { id: string };
-}) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log('params', params);
-  const post = posts.find((item) => item.id === params.id);
+  const post = posts.find((item) => item.id === params?.id);
 
   let postHtml = '';
 

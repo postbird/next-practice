@@ -1,9 +1,7 @@
-import { NextPage } from 'next';
-import React from 'react';
-import { Layout, PostList, PostListItem } from '../../components';
+import { GetServerSideProps, NextPage } from 'next';
 import { fetchPostList } from '../../apis/posts';
+import { Layout, PostList } from '../../components';
 import { IPost } from '../../types';
-import { List } from 'antd';
 
 const SSRPostsPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
   return (
@@ -16,7 +14,7 @@ const SSRPostsPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
 
 export default SSRPostsPage;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await fetchPostList();
   return {
     props: {

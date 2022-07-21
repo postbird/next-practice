@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { IPost } from '../../types';
 
 export const posts: IPost[] = [

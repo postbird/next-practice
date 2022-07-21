@@ -1,4 +1,4 @@
-import { Button, List } from 'antd';
+import { List } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IPost } from '../../types';

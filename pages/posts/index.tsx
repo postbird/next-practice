@@ -1,8 +1,6 @@
-import { List } from 'antd';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import { Layout, PostList, PostListItem } from '../../components';
+import { Layout, PostList } from '../../components';
 import { posts } from '../../mocks';
 import { IPost } from '../../types';
 import styles from './index.module.css';
@@ -32,7 +30,7 @@ const PostPage: NextPage<{ posts: IPost[] }> = ({ posts }) => {
 
 export default PostPage;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   // const posts = await fetchPostList();
   return {
     props: {
