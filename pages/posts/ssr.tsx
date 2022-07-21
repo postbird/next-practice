@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import React from 'react';
 import { Layout, PostList, PostListItem } from '../../components';
-import { fetchPostList } from '../api/posts';
+import { fetchPostList } from '../../apis/posts';
 import { IPost } from '../../types';
 import { List } from 'antd';
 

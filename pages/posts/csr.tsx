@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import React, { useEffect } from 'react';
 import { Layout, PostList, PostListItem } from '../../components';
 import useSWR, { useSWRConfig } from 'swr';
-import { fetchPostList } from '../api/posts';
+import { fetchPostList } from '../../apis/posts';
 import { Button, List, Skeleton } from 'antd';
 
 const LIST_API = '/posts/list';
