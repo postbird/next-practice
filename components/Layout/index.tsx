@@ -26,7 +26,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const router = useRouter();
-  console.log('router', router);
   return (
     <div className={styles.wrap}>
       <h1 className={styles.title}>Hello Next.js</h1>
