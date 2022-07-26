@@ -6,6 +6,7 @@ import {
 } from 'next';
 
 import { Skeleton } from 'antd';
+import Head from 'next/head';
 
 type IPost = {
   id: string;
@@ -15,24 +16,37 @@ type IPost = {
 
 const Page: NextPage<{ post?: IPost }> = ({ post }) => {
   return (
-    <div
-      style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}
-    >
-      <h1>getStaticProps</h1>
-      <h2>{post?.title ? post.title : <Skeleton.Input active />}</h2>
-      <p>{post?.date ? post.date : <Skeleton.Input active />}</p>
-    </div>
+    <>
+      <Head>
+        <title>{post?.title || '--'}</title>
+        <meta name="description" content={post?.title || '-- description'} />
+      </Head>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <h1>getStaticProps</h1>
+        <h2>{post?.title ? post.title : <Skeleton.Input active />}</h2>
+        <p>{post?.date ? post.date : <Skeleton.Input active />}</p>
+      </div>
+    </>
   );
 };
 
 export default Page;
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = () => {
+  console.log('getStaticPaths execed');
   const ids = Array.from(new Array(1)).map((_, index) => index);
   return {
     paths: ids.map((item) => ({ params: { id: String(item) } })),
     // paths: [],
-    fallback: 'blocking',
+    // fallback: false,
+    fallback: true,
+    // fallback: 'blocking',
   };
 };
 
