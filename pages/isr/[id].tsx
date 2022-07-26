@@ -6,7 +6,7 @@ import {
 } from 'next';
 
 import { Skeleton } from 'antd';
-import { fetchPost, IPost } from './utils';
+import { fetchPost, IPost } from '../../utils';
 
 const Page: NextPage<{ post?: IPost }> = ({ post }) => {
   return (
@@ -42,5 +42,6 @@ export const getStaticProps: GetStaticProps<
     props: {
       post,
     },
+    revalidate: 2, // 2s 内最多执行一次 regenaration
   };
 };
