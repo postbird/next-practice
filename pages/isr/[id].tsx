@@ -6,12 +6,7 @@ import {
 } from 'next';
 
 import { Skeleton } from 'antd';
-
-type IPost = {
-  id: string;
-  title: string;
-  date: string;
-};
+import { fetchPost, IPost } from './utils';
 
 const Page: NextPage<{ post?: IPost }> = ({ post }) => {
   return (
@@ -34,20 +29,6 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = () => {
     // paths: [],
     fallback: 'blocking',
   };
-};
-
-const fetchPost = (id: string): Promise<IPost> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log('fetch id is ', id);
-      const post = {
-        title: Math.random().toString(),
-        date: Date.now().toString(),
-        id,
-      };
-      resolve(post);
-    }, 1000);
-  });
 };
 
 export const getStaticProps: GetStaticProps<
