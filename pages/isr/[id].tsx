@@ -23,6 +23,7 @@ const Page: NextPage<{ post?: IPost }> = ({ post }) => {
 export default Page;
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = () => {
+  console.log('getStaticPaths execed');
   const ids = Array.from(new Array(1)).map((_, index) => index);
   return {
     paths: ids.map((item) => ({ params: { id: String(item) } })),
@@ -37,7 +38,10 @@ export const getStaticProps: GetStaticProps<
 > = async (ctx: GetStaticPropsContext) => {
   const id: string = ctx.params?.id as string;
   console.log('exec id is ', id);
-  const post = await fetchPost(id);
+  const post = await fetchPost(id, 0);
+  if (id === '222') {
+    throw new Error('222 is broken');
+  }
   return {
     props: {
       post,

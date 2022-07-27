@@ -1,4 +1,4 @@
-export const fetchPost = (id: string): Promise<IPost> => {
+export const fetchPost = (id: string, timer: number = 1000): Promise<IPost> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       console.log('fetch id is ', id);
@@ -8,7 +8,7 @@ export const fetchPost = (id: string): Promise<IPost> => {
         id,
       };
       resolve(post);
-    }, 1000);
+    }, timer);
   });
 };
 
