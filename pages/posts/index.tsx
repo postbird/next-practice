@@ -7,7 +7,7 @@ const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const timer   = setInterval(() => {
       setCount((count) => count + 1);
     }, 1000);
 
