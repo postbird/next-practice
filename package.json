@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "antd": "^4.21.7",
+    "helloworld": "link:",
     "next": "12.2.2",
     "next-with-less": "^2.0.5",
     "react": "18.2.0",

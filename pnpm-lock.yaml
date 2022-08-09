@@ -7,6 +7,7 @@ specifiers:
   antd: ^4.21.7
   eslint: 8.20.0
   eslint-config-next: 12.2.2
+  helloworld: 'link:'
   husky: ^8.0.1
   less: ^4.1.3
   less-loader: ^11.0.0
@@ -26,6 +27,7 @@ specifiers:
 
 dependencies:
   antd: 4.21.7_biqbaboplfbrettd7655fr4n2y
+  helloworld: 'link:'
   next: 12.2.2_biqbaboplfbrettd7655fr4n2y
   next-with-less: 2.0.5_cfogn65m7ehdcwfoxsdwystqum
   react: 18.2.0
