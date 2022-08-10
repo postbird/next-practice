@@ -1,13 +1,18 @@
+import { PostItem } from '@/components';
+import { Button } from 'antd';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import styles from './index.module.less';
 
 const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
   const [count, setCount] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
-    const timer   = setInterval(() => {
+    const timer = setInterval(() => {
       setCount((count) => count + 1);
     }, 1000);
 
@@ -16,9 +21,25 @@ const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
     };
   }, []);
 
+  const handleClick = () => {
+    router.push({ pathname: '/posts/create', query: { a: 'aa' } });
+  };
+
   return (
     <div className={styles.wrap}>
       <h1>Posts: {count}</h1>
+      <PostItem />
+      <Link
+        href={{ pathname: '/posts/create', query: { a: 1, from: '中文//' } }}
+      >
+        <Button type="primary" block style={{ margin: 32 }}>
+          创建 Link
+        </Button>
+      </Link>
+
+      <Button type="primary" block style={{ margin: 32 }} onClick={handleClick}>
+        创建 Click useRouter
+      </Button>
       <Image
         src="/images/large.jpg"
         alt="large"
