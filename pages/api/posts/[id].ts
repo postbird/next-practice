@@ -1,9 +1,9 @@
 import { IPosts } from '@/types';
-import { sleep } from '@/utils';
+import fs from 'fs/promises';
 import { NextApiRequest, NextApiResponse } from 'next';
+import path from 'path';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const id = req.query.id;
   const postList: IPosts = Array.from(new Array(100)).map((_, index) => {
     return {
       title: `Post_${index}`,
@@ -11,8 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       id: index + 1,
     };
   });
-  await sleep(300);
-  res.status(200).json({ list: postList });
+  res.status(200).send(await fs.readFile(path.resolve('./README.md')));
 };
 
 export default handler;
