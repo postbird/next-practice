@@ -1,4 +1,3 @@
-import { PostItem } from '@/components';
 import { Button } from 'antd';
 import { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
@@ -9,6 +8,7 @@ import styles from './index.module.less';
 
 const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
   const [count, setCount] = useState(0);
+  const [name, setName] = useState<string>();
   const router = useRouter();
 
   useEffect(() => {
@@ -22,15 +22,34 @@ const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
   }, []);
 
   const handleClick = () => {
-    router.push({ pathname: '/posts/create', query: { a: 'aa' } });
+    router.push(
+      { pathname: '/posts/', query: { name: 'aa' } },
+      '/posts/xx?name=x',
+      {
+        shallow: true,
+      }
+    );
   };
+
+  useEffect(() => {
+    console.log('router changed', router.query?.name);
+    let name = router.query?.name;
+    if (!name) {
+      return;
+    }
+    if (Array.isArray(name)) {
+      name = name.pop();
+    }
+    setName(name);
+  }, [router.query?.name]);
 
   return (
     <div className={styles.wrap}>
       <h1>Posts: {count}</h1>
-      <PostItem />
+      <h2>Posts: {name || '--'}</h2>
       <Link
-        href={{ pathname: '/posts/create', query: { a: 1, from: '中文//' } }}
+        shallow
+        href={{ pathname: '/posts/', query: { name: 1, from: '中文//' } }}
       >
         <Button type="primary" block style={{ margin: 32 }}>
           创建 Link
@@ -54,6 +73,7 @@ const Page: NextPage<{ posts: number[] }> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps<{ posts: number[] }> = () => {
+  console.log('getStaticProps', getStaticProps);
   return {
     props: {
       posts: Array.from(new Array(100)).map((_, index) => index),
